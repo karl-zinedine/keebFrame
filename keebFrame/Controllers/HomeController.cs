@@ -1,4 +1,5 @@
 ﻿using keebFrame.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,6 +21,8 @@ namespace keebFrame.Controllers
 
         public IActionResult Index()
         {
+            var model = new Posts();
+            //var response = await
             return View();
         }
 

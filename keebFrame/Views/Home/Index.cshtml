@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Posts>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -67,7 +69,33 @@
         </p>
 
     </div>
-    <table id="example" class="display" style="width:100%">
+    <table id="postsTbl" class="display">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>ImageId</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var post in Model)
+            {
+                <tr>
+                    <td>@post.pId</td>
+                    <td>@post.pTitle</td>
+                    <td>@post.pQuestion</td>
+                    <td>@post.pAnswer</td>
+                    <td>@post.pImageId</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+    @*<table id="example" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -546,7 +574,7 @@
                 <th>Salary</th>
             </tr>
         </tfoot>
-    </table>
+    </table>*@
 </body>
 
 </html>
