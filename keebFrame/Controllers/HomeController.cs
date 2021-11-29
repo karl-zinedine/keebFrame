@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace keebFrame.Controllers
 {
@@ -44,12 +45,14 @@ namespace keebFrame.Controllers
             return View();
         }
 
-        public async Task<IActionResult> GetPosts()
+        public async Task<String> GetPosts()
         {
-            var data = await _context.Posts.FirstOrDefaultAsync();
+            //var data = await _context.Posts.FirstOrDefaultAsync();
+            var data = await _context.Posts.ToListAsync();
 
-            //List<Posts> allPosts = data;
-            return Json(new { data = data }, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+            List<Posts> allPosts = data;
+            //return Json(new { data = data }, System.Web.Mvc.JsonRequestBehavior.AllowGet);
+            return JsonConvert.SerializeObject(data);
         }
 
         //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
