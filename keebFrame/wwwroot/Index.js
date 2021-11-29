@@ -24,11 +24,11 @@ $(document).ready(function () {
                 //}],
                 data: data,
                 columns: [
-                    { data: "PAnswer" },
                     { data: "PId" },
-                    { data: "PImageId" },
+                    { data: "PTitle" },
                     { data: "PQuestion" },
-                    { data: "PTitle" }
+                    { data: "PAnswer" },
+                    { data: "PImageId" }                 
                 ]
             });
         }
