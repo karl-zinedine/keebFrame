@@ -29,7 +29,10 @@ namespace keebFrame
 
             services.AddDbContext<keebFrameContext>(options => options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=keebFrame;Trusted_Connection=True;"));
             //services.AddDbContext<keebFrameContext>(options => options.UseSqlServer("Server=KARL-DELL\\SQLEXPRESS;Database=keebFrame;Trusted_Connection=True;"));
+            //services.AddDbContext<keebFrameContext>(options => options.UseSqlServer("Server=.;Database=keebFrame;Trusted_Connection=True;"));
+
             //services.AddDbContext<keebFrameContext>(options => options.UseSqlServer("Server=DESKTOP-146S6ED;Database=keebFrame;Trusted_Connection=True;"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
