@@ -3,7 +3,9 @@
     callback();
 }
 
-
+function refreshPage() {
+    location.reload(true);
+}
 
 $(document).ready(function () {
 
@@ -44,19 +46,49 @@ $(document).ready(function () {
         }
     });
 
+    //$("#addPostBtn").click(function () {
+    //    $.ajax(
+    //        {
+    //            type: "POST", //HTTP POST Method  
+    //            url: "Home/AddPost", // Controller/View  
+    //            data: { //Passing data  
+    //                Title: $("#inputTitle").val(), //Reading text box values using Jquery   
+    //                Question: $("#inputQuestion").val(),
+    //                Answer: $("#inputAnswer").val()
+    //            },
+    //            success: function (response) {
+    //                console.log(response);
+    //            }
+    //        });
+        
+    //    console.log($("#inputTitle").val());
+    //}); 
+
     $("#addPostBtn").click(function () {
-        $.ajax(
-            {
-                type: "POST", //HTTP POST Method  
-                url: "Home/AddPost", // Controller/View   
-                data: { //Passing data  
-                    Title: $("#inputTitle").val(), //Reading text box values using Jquery   
-                    Question: $("#inputQuestion").val(),
-                    Answer: $("#inputAnswer").val()
-                }
+        
+        var dataObject = {
+            PId: null,
+            PTitle: $('#inputTitle').val(),
+            PTitle: $('#inputTitle').val(),
+            PQuestion: $('#inputQuestion').val(),
+            PAnswer: $('#inputAnswer').val(),
+            PId: null
+        };
+        
+        $.ajax({
+            type: 'POST',
+            url: '/Home/InsertPost',
+            //contentType: 'application/json; charset=utf-8',
+            //async: true,
+            dataType: 'json',
+            data: dataObject,
+            success: function () {
+                setInterval('refreshPage()', 2000);
+            }
+        });
 
-            });
 
-    });  
+    });
 
+    
 });

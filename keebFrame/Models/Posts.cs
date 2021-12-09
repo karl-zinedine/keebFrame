@@ -7,7 +7,7 @@ namespace keebFrame.Models
     public partial class Posts
     {
         [Key]
-        public int PId { get; set; }
+        public int? PId { get; set; }
         public string PTitle { get; set; }
         public string PQuestion { get; set; }
         public string PAnswer { get; set; }
