@@ -16,7 +16,7 @@ function refreshPage() {
 }
 
 $(document).ready(function () {
-
+    //$('#loading').hide();
     doStuff(function () {
         document.body.className = 'visible';
     });
