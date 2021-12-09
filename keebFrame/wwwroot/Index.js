@@ -1,4 +1,12 @@
-﻿function doStuff(callback) {
+﻿$(document)
+    .ajaxStart(function () {
+        $('#loading').show;
+    })
+    .ajaxStop(function () {
+        $('#loading').hide;
+    })
+
+function doStuff(callback) {
     // do all app scripts here...
     callback();
 }
