@@ -8,95 +8,109 @@
 
 <html>
 <head>
-	<!-- Font Awesome CSS -->
-	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
+    <!-- Font Awesome CSS -->
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js"></script>
 
     <link rel="icon" src="/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="~/datatables.min.css" />
     <script type="text/javascript" src="~/datatables.min.js"></script>
     <script src="~/Index.js"></script>
 
-	@*<meta name="viewport" content="width=device-width, initial-scale=1">*@
-	<style>
-		body, html {
-			margin: 0;
-			background-image: url('/av3_production_layers_1.png');
-			/* Full height */ height: 100%; /* Center and scale the image nicely */
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			background-color: rgba(255,255,255,0.6);
-			background-blend-mode: lighten;
-		}
+    @*<meta name="viewport" content="width=device-width, initial-scale=1">*@
+    <style>
+        body, html {
+            margin: 0;
+            background-image: url('/av3_production_layers_1.png');
+            /* Full height */ height: 100%; /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-color: rgba(255,255,255,0.6);
+            background-blend-mode: lighten;
+        }
 
-		.main {
-			/*position: absolute;*/
-			/*background-color: blue;
-			filter: alpha(opacity=20);
-			opacity: 0.6;*/
-			text-align: center;
-		}
+        .main {
+            /*position: absolute;*/
+            /*background-color: blue;
+            filter: alpha(opacity=20);
+            opacity: 0.6;*/
+            text-align: center;
+        }
 
-		p {
-			color: white;
-			filter: alpha(opacity=100);
-			opacity: 1;
-			text-align: center;
-		}
+        p {
+            color: white;
+            filter: alpha(opacity=100);
+            opacity: 1;
+            text-align: center;
+        }
 
-		#rcorners {
-			border-radius: 25px;
-			background: #0d0082;
-			filter: alpha(opacity=60);
-			opacity: 0.8;
-			padding: 20px;
-			text-align: center;
-		}
-	</style>
+        #rcorners {
+            border-radius: 25px;
+            background: #0d0082;
+            filter: alpha(opacity=60);
+            opacity: 0.8;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+        }
+    </style>
 </head>
 <body>
+
+    <script>
+        document.body.className = 'hidden';
+    </script>
     @*<h3>
-        @data.PId
-    </h3>*@
+            @data.PId
+        </h3>*@
 
 
-	<div class="main" style="text-align: center;">
-		<p id="rcorners">
-			KeebFrame is wiki for custom keyboards. It will walk you through the parts of keyboards from switches to layouts.
-			This website is managed by Ethan Nagelvoort, Karl Horcasitas, and Giemer Lozares. Enter any keyboard-related term you are curious about in the searchbar below.
-		</p>
-	</div>
-	<table id="example" class="display" style="width:100%">
-		<thead>
-			<tr>
-				<th>pId</th>
-				<th>pTitle</th>
-				<th>pQuestion</th>
-				<th>pAnswer</th>
-				<th>pImageId</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</tbody>
-		@*<tfoot>
+    <div class="main" style="text-align: center;">
+        <p id="rcorners">
+            KeebFrame is a website about how awesome keyboards are. It will walk you through the world of keyboards from switches to types.
+            This website is managed by Ethan Nagelvoort, Karl Horcasitas, and Giemer Lozares. We all have a deep love for keyboards
+            and this website helps us express this. Please use it to learn about all the fascinating things about keyboards.
+        </p>
+    </div>
+    <table id="example" class="display" style="width:100%">
+        <thead>
             <tr>
-                <th>PID</th>
-                <th>PTitle</th>
-                <th>PQuestion</th>
-                <th>PAnswer</th>
-                <th>PImageId</th>
+                <th>pId</th>
+                <th>pTitle</th>
+                <th>pQuestion</th>
+                <th>pAnswer</th>
+                <th>pImageId</th>
             </tr>
-		</tfoot>*@
-	</table>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        @*<tfoot>
+                <tr>
+                    <th>PID</th>
+                    <th>PTitle</th>
+                    <th>PQuestion</th>
+                    <th>PAnswer</th>
+                    <th>PImageId</th>
+                </tr>
+            </tfoot>*@
+    </table>
 </body>
 
 </html>

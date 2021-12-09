@@ -1,6 +1,16 @@
-﻿
+﻿function doStuff(callback) {
+    // do all app scripts here...
+    callback();
+}
+
+
 
 $(document).ready(function () {
+
+    doStuff(function () {
+        document.body.className = 'visible';
+    });
+
     $.ajax({
         url: '/Home/GetPosts',
         type: 'post',
@@ -28,10 +38,25 @@ $(document).ready(function () {
                     { data: "PTitle" },
                     { data: "PQuestion" },
                     { data: "PAnswer" },
-                    { data: "PImageId" }                 
+                    { data: "PImageId" }
                 ]
             });
         }
-    })
+    });
+
+    $("#addPostBtn").click(function () {
+        $.ajax(
+            {
+                type: "POST", //HTTP POST Method  
+                url: "Home/AddPost", // Controller/View   
+                data: { //Passing data  
+                    Title: $("#inputTitle").val(), //Reading text box values using Jquery   
+                    Question: $("#inputQuestion").val(),
+                    Answer: $("#inputAnswer").val()
+                }
+
+            });
+
+    });  
 
 });
