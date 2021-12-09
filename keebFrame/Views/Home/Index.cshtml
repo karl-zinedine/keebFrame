@@ -64,6 +64,16 @@
             transition: opacity 1.5s ease-out;
         }
 
+        #loading {
+            display: flex;
+            justify-content: center;
+        }
+
+        #img {
+            width: 20%;
+            height: 20%;
+        }
+
     </style>
 </head>
 <body>
@@ -75,9 +85,7 @@
             @data.PId
         </h3>*@
     
-    <div class="loading text-center" id="loading">
-        <img src="~/keebFrame Loading.png" />
-    </div>
+    
 
     <div class="main" style="text-align: center;">
         <p id="rcorners">
@@ -146,6 +154,10 @@
                         <button type="submit" class="btn btn-primary" id="addPostBtn">Post</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                     </div>
+                    <div id="loading">
+                        <img id="img" src="~/loading-buffering.gif" />
+                    </div>
+                    <br />
                 </div>
             </div>
         </div>

@@ -1,10 +1,8 @@
-﻿$(document)
-    .ajaxStart(function () {
-        $('#loading').show;
-    })
-    .ajaxStop(function () {
-        $('#loading').hide;
-    })
+﻿$('#loading').bind('ajaxStart', function () {
+    $(this).show();
+}).bind('ajaxStop', function () {
+    $(this).hide();
+});
 
 function doStuff(callback) {
     // do all app scripts here...
@@ -16,7 +14,7 @@ function refreshPage() {
 }
 
 $(document).ready(function () {
-    //$('#loading').hide();
+    $('#loading').hide();
     doStuff(function () {
         document.body.className = 'visible';
     });
@@ -91,7 +89,7 @@ $(document).ready(function () {
             dataType: 'json',
             data: dataObject,
             success: function () {
-                setInterval('refreshPage()', 2000);
+                setInterval('refreshPage()', 1000);
             }
         });
 
