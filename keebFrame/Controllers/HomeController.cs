@@ -8,6 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.IdentityModel.Protocols;
+using Microsoft.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace keebFrame.Controllers
 {
@@ -21,6 +25,7 @@ namespace keebFrame.Controllers
         //}
 
         private readonly keebFrameContext _context;
+        private SqlConnection con;
 
         public HomeController(keebFrameContext context)
         {
@@ -55,10 +60,34 @@ namespace keebFrame.Controllers
             return JsonConvert.SerializeObject(data);
         }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+        //Post method to add details    
+        [HttpPost]
+        public ActionResult AddPosts(Posts obj)
+        {
+            AddPostDetails(obj);
+            return View();
+        }
+
+        //To Handle connection related activities    
+        private void connection()
+        {
+            string constr = ConfigurationManager.ConnectionStrings["SqlConn"].ToString();
+            con = new SqlConnection(constr);
+
+        }
+        //To add Records into database     
+        private void AddPostDetails(Posts obj)
+        {
+            connection();
+            SqlCommand com = new SqlCommand("AddPost", con); //TODO: replace AddEmp with actual stored procedure name
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@Title", obj.PTitle);
+            com.Parameters.AddWithValue("@Question", obj.PQuestion);
+            com.Parameters.AddWithValue("@Answer", obj.PAnswer);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+
+        }
     }
 }
