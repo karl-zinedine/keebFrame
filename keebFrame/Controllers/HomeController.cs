@@ -60,6 +60,29 @@ namespace keebFrame.Controllers
             return JsonConvert.SerializeObject(data);
         }
 
+        //[Route("/Home/InsertPost/{post}")]
+        [HttpPost]
+        public ActionResult InsertPost(Posts post)
+        {
+            //using (keebFrameContext entities = new keebFrameContext())
+            //{
+            //    entities.Posts.Add(post);
+            //    entities.SaveChanges();
+            //}
+
+            connection();
+            SqlCommand com = new SqlCommand("AddPost", con); //TODO: replace AddEmp with actual stored procedure name
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@Title", post.PTitle);
+            com.Parameters.AddWithValue("@Question", post.PQuestion);
+            com.Parameters.AddWithValue("@Answer", post.PAnswer);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+
+            return Json(post);
+        }
+
         //Post method to add details    
         [HttpPost]
         public ActionResult AddPosts(Posts obj)
@@ -71,7 +94,7 @@ namespace keebFrame.Controllers
         //To Handle connection related activities    
         private void connection()
         {
-            string constr = ConfigurationManager.ConnectionStrings["SqlConn"].ToString();
+            string constr = "Server = (localdb)\\mssqllocaldb; Database = keebFrame; Trusted_Connection = True;";
             con = new SqlConnection(constr);
 
         }
